@@ -4,11 +4,14 @@
 const contentInput = document.querySelector('.search_input');
 const button = document.querySelector('.btn');
 const list = document.querySelector('.list');
+const dataLocal = document.querySelector('.localSt');
+
+let miArray = [];
+
 
 //imagen que quiero añadir sino la tiene
 let image = 'https://via.placeholder.com/210x295/cccccc/666666/?text=TV';
 const api = 'http://api.tvmaze.com/search/shows?q=';
-
 
 const handleShow = () => {
 //busco el valor de mi input
@@ -32,8 +35,8 @@ const result = (data) => {
     }
 // a mi Ul del html le añado este contenido
     list.innerHTML +=`
-    <li class="itemLi">
-      <div class="content"><img class="img_content" src="${image}" alt="">
+    <li class="itemLi" id="itemLi-favourite">
+      <div class="content" id="content-local"><img class="img_content" src="${image}" alt="" >
         <h2 class="title_content">${data[i].show.name}</h2>
       </div>
     </li>
@@ -47,34 +50,32 @@ function favourite (){
 //recorro los Li y accedo con click
   for(let i = 0;i < itemLi.length; i++){
 //al hacer click llamo a la funcion (addClass)
-  itemLi[i].addEventListener('click', addClass);
+  itemLi[i].addEventListener('click', addClassFavourite);
   }
 }
 //añadir clase cuando hago click
-function addClass(e){
+function addClassFavourite(e){
 //elemento sobre el que esta el listener.
   const itemClick = e.currentTarget;
 //a itemClick le añado la clase (itemLi-favourite)
   itemClick.classList.toggle('itemLi-favourite');
-};
 
+//   //LOCALSTORAGE
+//   if (itemClick.classList.toggle('itemLi-favourite') === itemClick) {
+//   //si es verdadero con push()agrega el elementos al final del array
+//   miArray.push(itemClick.innerHTML);
+//     console.log('Está marcado como favorito');
+//   } else{
+//     console.log('No está marcado');
+//   }
 
-//ejemplo localStorage
+//   // setItem para guardar en localStorage
+//   localStorage.setItem('miArray', JSON.stringify(miArray));
+//   //getItem para recuperar los datos del localStorage
+//   const savedFavourite= JSON.parse(localStorage.getItem('miArray'));
+//   console.log(savedFavourite.length);
+// };
 
-const  tasks = [
-  {name: 'Recoger setas en el campo', completed: true},
-  {name: 'Comprar pilas', completed: true},
-  {name: 'Poner una lavadora de blancos', completed: true},
-  {name: 'Aprender cómo funcionan los objetos de JavaScript', completed: false}
-];
-
-localStorage.setItem('taks', JSON.stringify(tasks));
-
-const  savedTasks = JSON.parse(localStorage.getItem('taks'));
-console.log(savedTasks.length); //4
-
-
-
-
+}
 button.addEventListener('click', handleShow);
 

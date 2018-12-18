@@ -11,19 +11,19 @@
   align-items:center;
 }
 .img_content{
-  width: 200px;
-  height: 250px;
-  padding-top:10px;
+  padding-top: 20px;
+  width: 230px;
+  height: 300px;
 }
 .itemLi{
-  border:1px solid black;
-  background-color: pink;
+  border:1px solid rgb(105, 0, 32);
+  background-color: rgb(252, 210, 217);
   margin: 20px;
   list-style: none;
 }
 .itemLi-favourite{
-  background-color: rgb(245, 62, 62);
-  border: 5px solid black;
+  background-color:rgb(240, 133, 151);
+  border: 3px solid rgb(150, 6, 6);
   color:white;
 }
 .title_content{
@@ -32,7 +32,7 @@
 .list{
   display: flex;
   padding:20px;
-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .btn{
   background-color: rgb(133, 8, 8);
